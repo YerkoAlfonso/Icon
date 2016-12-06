@@ -460,7 +460,7 @@ var vp = {
 "fecha" :bd_fecha ,
 "vuelo":bd_vuelo ,
 "ipsv" :bd_ipsv ,
-"tpsu" :bd_tpsu ,
+"tpsv" :bd_tpsu ,
 "psv" :bd_psv ,
 "pd" :bd_pd ,
 "pps" :bd_pps ,
@@ -913,7 +913,7 @@ $scope.GuardarDatos = function(){
 var datefr = new Date();
 var id =$filter('date')(datefr, 'ddMMyyyyHHmmsss','UTC')
 
-     var tipo = "Wait Body";
+     var tipo = "Wide Body";
 var vp = {
 
 "_id":"vuelo_ordenado_"+userBd+"_"+id,
@@ -1547,10 +1547,10 @@ destino: "Destino :" +response.rows[i].doc.destino,
 fecha:"fecha : " + response.rows[i].doc.fecha,
 vuelo:"vuelo : " + response.rows[i].doc.vuelo,
 ipsv :"IPSV : " + response.rows[i].doc.ipsv,
-tpsu :"TPSV : " + response.rows[i].doc.tpsu,
+tpsv :"TPSV : " + response.rows[i].doc.tpsu,
 psv:"PSV : " +  response.rows[i].doc.psv,
 pd:"PD : " + response.rows[i].doc.pd,
-nips: "NIPS : " + response.rows[i].doc.pps,
+nipsV: "NIPSV : " + response.rows[i].doc.pps,
 alerta :"Alerta : " +  response.rows[i].doc.alerta ,
 
 
