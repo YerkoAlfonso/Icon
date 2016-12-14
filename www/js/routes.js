@@ -84,11 +84,7 @@ angular.module('app.routes', [])
     controller: 'signupCtrl'
   })
 
-  .state('page', {
-    url: '/page7',
-    templateUrl: 'templates/page.html',
-    controller: 'pageCtrl'
-  })
+ 
 
   .state('menu.seleccioneTipoVuelo', {
     url: '/page8',

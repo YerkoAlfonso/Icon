@@ -12,25 +12,24 @@ dbLocal.sync(dbRemote, {
   live: true,
   retry: true
 }).on('change', function (change) {
-  // yo, something changed!
+
 }).on('paused', function (info) {
-  // replication was paused, usually because of a lost connection
 }).on('active', function (info) {
-  // replication was resumed
+
 }).on('error', function (err) {
-  // totally unhandled error (shouldn't happen)
+
 });
 dbRemote.sync(dbLocal, {
   live: true,
   retry: true
 }).on('change', function (change) {
-  // yo, something changed!
+  
 }).on('paused', function (info) {
-  // replication was paused, usually because of a lost connection
+
 }).on('active', function (info) {
-  // replication was resumed
+
 }).on('error', function (err) {
-  // totally unhandled error (shouldn't happen)
+
 });
 
 
@@ -69,21 +68,14 @@ if(id.id == 0){
 
   n_pilotos =2;
 }
-/*if(id.id  ==1 ){
-  n_pilotos = 3;
-}
 
-if(id.id = 2){
-  n_pilotos = 4;
-}
-*/
 }
 
 
  
 $scope.calcularHorasServicio = function(cxt){
 
-//Inicio de Funcion calcular
+
 
 var dianoche2 = "";
 
@@ -92,7 +84,6 @@ if(n_pilotos ==0 ){
   n_pilotos=2;
 }
 
-//sE DEFINIIO LA VARIABLE DIANOCHE
 if(cxt.dia_noche){
 
   dianoche2 = "Noche";
@@ -138,12 +129,10 @@ console.log(horafin);
 
 
 
-//Hora
   var inicioHoras = parseInt(horai);
    var finHoras = parseInt(horafin);
 var finHoras2 = parseInt(horafin);
 
-  //Minutos
 
 var inicioMinutos = parseInt(horaipsv.substr(3,2));
   var finMinutos = parseInt(horatpsu.substr(3,2));
@@ -209,8 +198,6 @@ strinminutos = transcurridoMinutos.toString();
   $scope.transcurridoHoras =  stringtiempotrans +":" +  strinminutos;
 
 
-
-// Comparativa para PD
 
 var horasdesc =0;
 if(horasdif < 8){
@@ -420,7 +407,7 @@ if(finMinutos <10){
 {}
 
 
-//variables para BD
+
 bd_dianoche = dianoche2;
 bd_pilotos = n_pilotos;
 bd_n = cxt.n;
@@ -460,7 +447,7 @@ var vp = {
 "fecha" :bd_fecha ,
 "vuelo":bd_vuelo ,
 "ipsv" :bd_ipsv ,
-"tpsv" :bd_tpsu ,
+"tpsu" :bd_tpsu ,
 "psv" :bd_psv ,
 "pd" :bd_pd ,
 "pps" :bd_pps ,
@@ -478,18 +465,7 @@ dbLocal.put(vp, function(err, result){
     })
 
 
-/*dbLocal.sync(dbRemote, {
-  live: true,
-  retry: true
-}).on('change', function (change) {
-  // yo, something changed!
-}).on('paused', function (info) {
-  // replication was paused, usually because of a lost connection
-}).on('active', function (info) {
-  // replication was resumed
-}).on('error', function (err) {
-  // totally unhandled error (shouldn't happen)
-});*/
+
 }
 
 
@@ -541,7 +517,7 @@ if(id.id = 2){
  
 $scope.calcularHorasServicio = function(cxt){
 
-//Inicio de Funcion calcular
+
 
 var dianoche2 = "";
 
@@ -550,7 +526,7 @@ if(n_pilotos ==0 ){
   n_pilotos=2;
 }
 
-//sE DEFINIIO LA VARIABLE DIANOCHE
+
 if(cxt.dia_noche){
 
   dianoche2 = "Noche";
@@ -585,28 +561,15 @@ var validHoraFin = horatpsu.substr(1,1);
  console.log(validHorai);
 console.log(validHoraFin);
 
-/*if(angular.usuariusu(validHorai,":")){
 
-horai = horaipsv.substr(0,1);
-}
-else
-{*/
 
 horai = horaipsv.substr(0,2);
 
-/*}
 
-
-if(angular.equals(validHoraFin,":")){
-
-  horafin = horatpsu.substr(0,1);
-}
-else
-{*/
 
  horafin = horatpsu.substr(0,2);
 
-//}
+
 
 console.log(horai);
 
@@ -615,12 +578,11 @@ console.log(horafin);
 
 
 
-//Hora
   var inicioHoras = parseInt(horai);
    var finHoras = parseInt(horafin);
 var finHoras2 = parseInt(horafin);
 
-  //Minutos
+
 
 var inicioMinutos = parseInt(horaipsv.substr(3,2));
   var finMinutos = parseInt(horatpsu.substr(3,2));
@@ -676,7 +638,6 @@ strinminutos = transcurridoMinutos.toString();
 
 
 
-// Comparativa para PD
 
 var horasdesc =0;
 if(horasdif < 8){
@@ -944,25 +905,11 @@ dbLocal.put(vp, function(err, result){
     })
 
 
-/*dbLocal.sync(dbRemote, {
-  live: true,
-  retry: true
-}).on('change', function (change) {
-  // yo, something changed!
-}).on('paused', function (info) {
-  // replication was paused, usually because of a lost connection
-}).on('active', function (info) {
-  // replication was resumed
-}).on('error', function (err) {
-  // totally unhandled error (shouldn't happen)
-});*/
 }
 
 })
    
-.controller('cloudCtrl', ['$scope', '$stateParams','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('cloudCtrl', ['$scope', '$stateParams','$state', 
 function ($scope, $stateParams,$state) {
 if(window.localStorage.getItem("username")!== undefined ){
   localStorage.removeItem("username");
@@ -972,14 +919,11 @@ $state.go('login');
 }])
 
 
-//Visualizador PDF
 
 
-.controller('pdf1Ctrl',
-function ($scope) {
 
 
-})
+
 
 .controller('pdf2Ctrl', 
 function ($scope) {
@@ -987,18 +931,12 @@ function ($scope) {
 
 })
 
-.controller('pdf3Ctrl',
-function ($scope) {
 
-
-})
 
 
 
    
-.controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('menuCtrl', ['$scope', '$stateParams', 
 function ($scope, $stateParams) {
 
 
@@ -1050,12 +988,10 @@ console.log(horafinv);
 
 
 
-//Hora
   var inicioHorasv = parseInt(horaiv);
    var finHorasv = parseInt(horafinv);
 
 
-  //Minutos
 
 var inicioMinutosv = parseInt(horainicioV.substr(3,2));
   var finMinutosv = parseInt(horaterminoV.substr(3,2));
@@ -1080,7 +1016,6 @@ console.log(timetransv);
 console.log(transcurridoMinutosv);
 
 
-//Formato variables BDS
 
 if(horafinvcl<10){
 
@@ -1155,7 +1090,6 @@ stringfinminutos = finMinutosv.toString();
 
 }
 
-//variables bd
 bd_fechat =$filter('date')(cxt.fechav, 'dd/MM/yyyy');
 bd_vuelot = cxt.vuelov;
  bd_iniovuelo = horapbdinicio+":"+strininiciominutos;
@@ -1202,13 +1136,12 @@ dbLocal.sync(dbRemote, {
   live: true,
   retry: true
 }).on('change', function (change) {
-  // yo, something changed!
 }).on('paused', function (info) {
-  // replication was paused, usually because of a lost connection
+  
 }).on('active', function (info) {
-  // replication was resumed
+ 
 }).on('error', function (err) {
-  // totally unhandled error (shouldn't happen)
+ 
 });
 }
 
@@ -1218,12 +1151,10 @@ dbLocal.sync(dbRemote, {
 
 })
    
-.controller('loginCtrl', ['$scope', '$stateParams','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('loginCtrl', ['$scope', '$stateParams','$state',
 function ($scope, $stateParams,$state,$location) {
 
-//alert(window.localStorage.getItem("username"));
+
 if(window.localStorage.getItem("username")!== null || window.localStorage.getItem("username")!= undefined ){
 $state.go('menu.seleccioneTipoVuelo');
 }
@@ -1246,8 +1177,6 @@ if(angular.equals(n_usu,"") && angular.equals(passok," "))
  $scope.alerta_lo = " Sin usuario y/o Contraseña";
 }
 
- // alert(n_usu);
-//  alert(passok);
 dbLocal.allDocs({startkey : 'usuario_nuevo_registro_us_'+n_usu+'\uffff',endkey: 'tiempo_vuelo',descending:true,include_docs:true}, function callback (err,usuario_login){
 for(var i=0; i<usuario_login.rows.length;i++){
 valipas =  usuario_login.rows[i].doc.contrasena;
@@ -1314,25 +1243,6 @@ var usuario = {
     })
 
 
- /* var key = 'tteetweellyingerawericat';
-    var pass = 'e0e05006fc061982981c680d3d3a868d2978f33d';
-    var remote = 'https://'+key+':'+pass+'@yerkoalfonso.cloudant.com/pilotos_bd';
-    
-    dbLocal.replicate.from(remote,{live:true,retry:true});*/
-/*dbLocal.sync(dbRemote, {
-  live: true,
-  retry: true
-}).on('change', function (change) {
-  // yo, something changed!
-}).on('paused', function (info) {
-  // replication was paused, usually because of a lost connection
-}).on('active', function (info) {
-  // replication was resumed
-}).on('error', function (err) {
-  // totally unhandled error (shouldn't happen)
-});*/
-
-
 }
 
 
@@ -1340,21 +1250,13 @@ var usuario = {
 
 })
    
-.controller('pageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
 
-
-}])
    
-.controller('seleccioneTipoVueloCtrl', ['$scope', '$stateParams', '$filter',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('seleccioneTipoVueloCtrl', ['$scope', '$stateParams', '$filter',
 function ($scope, $stateParams,$filter) {
 var datefr = new Date();
 var timeid =$filter('date')(datefr, 'ddMMyyyyHHmmsss','UTC')
-//alert(timeid);
+
 $scope.customStyle7 = {};
 $scope.customStyle10 = {};
  datosDBLocal=[]
@@ -1372,22 +1274,18 @@ var total =0;
 var siete =0;
 var diez =0;
 for(var i=0; i<response3.rows.length;i++){
-//datosDBLocal[i] = response.rows[i].doc;
-//console.log(response.rows[i].doc.n);
 
-//horai = horaipsv.substr(0,2);
-//var inicioMinutos = parseInt(horaipsv.substr(3,2));
-hora = response3.rows[i].doc.psv;
-
+hora = response3.rows[i].doc.tpsu;
+console.log(hora);
 horastr=hora.substr(0,2);
-//alert(horastr);
-min = response3.rows[i].doc.psv;
+
+min = response3.rows[i].doc.tpsu;
 minstrs=min.substr(3,2);
 
 horaint = (parseInt(horastr)*60) + horaint; 
 minint =parseInt( minstrs ) + minint;
 total = (horaint + minint)/60;
-//alert(total);
+
 if(i<7){
 
   siete = (horaint + minint)/60;
@@ -1414,28 +1312,15 @@ else{
 
 }
 }
-//alert(total);
 
-$scope.sietedias = siete;
-$scope.diezdia = diez;
+
+$scope.sietedias = siete.toFixed();
+$scope.diezdia = diez.toFixed();
 })
 
 
  $scope.groups2 = datosDBLocal;
-  /*for (var i=0; i<10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: []
-    };
-    for (var j=0; j<3; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }*/ 
 
-  /*
-   * if given group is the selected group, deselect it
-   * else, select the given group
-   */
   $scope.toggleGroup2 = function(group) {
     if ($scope.isGroupShown2(group)) {
       $scope.shownGroup2 = null;
@@ -1458,8 +1343,7 @@ dbLocal.allDocs({startkey : 'tiempo_vuelo_'+userBd+'\uffff',endkey: 'tiempo_vuel
 
 console.log(response2);
 for(var i=0; i<response2.rows.length;i++){
-//datosDBLocal[i] = response.rows[i].doc;
-//console.log(response.rows[i].doc.n);
+
 datosDBLocal[i] = {
 
 
@@ -1479,20 +1363,7 @@ TiempoVuelo:"Tiempo de vuelo  : " +  response2.rows[i].doc.tiempoVuelo
 
 
  $scope.groups2 = datosDBLocal;
-  /*for (var i=0; i<10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: []
-    };
-    for (var j=0; j<3; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }*/ 
-
-  /*
-   * if given group is the selected group, deselect it
-   * else, select the given group
-   */
+  
   $scope.toggleGroup2 = function(group) {
     if ($scope.isGroupShown2(group)) {
       $scope.shownGroup2 = null;
@@ -1521,21 +1392,20 @@ dbRemote.sync(dbLocal, {
   live: true,
   retry: true
 }).on('change', function (change) {
-  // yo, something changed!
+  
 }).on('paused', function (info) {
-  // replication was paused, usually because of a lost connection
+  
 }).on('active', function (info) {
-  // replication was resumed
+  
 }).on('error', function (err) {
-  // totally unhandled error (shouldn't happen)
+
 });
 
 dbLocal.allDocs({startkey : 'vuelo_ordenado_'+userBd+'\uffff',endkey: 'vuelo_ordenado_'+userBd+'',descending:true,include_docs:true}, function callback (err,response){
 
 console.log(response);
 for(var i=0; i<response.rows.length;i++){
-//datosDBLocal[i] = response.rows[i].doc;
-//console.log(response.rows[i].doc.n);
+
 datosDBLocal[i] = {
 
 tipo : "Tipo vuelo : " +  response.rows[i].doc.tipo_vuelo_ep,
@@ -1570,20 +1440,8 @@ for(var j=0; j< datosDBLocal.length;j++){
 }
 
  $scope.groups = datosDBLocal;
-  /*for (var i=0; i<10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: []
-    };
-    for (var j=0; j<3; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }*/ 
+  
 
-  /*
-   * if given group is the selected group, deselect it
-   * else, select the given group
-   */
   $scope.toggleGroup = function(group) {
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;
