@@ -1275,11 +1275,11 @@ var siete =0;
 var diez =0;
 for(var i=0; i<response3.rows.length;i++){
 
-hora = response3.rows[i].doc.tpsu;
+hora = response3.rows[i].doc.psv;
 console.log(hora);
 horastr=hora.substr(0,2);
 
-min = response3.rows[i].doc.tpsu;
+min = response3.rows[i].doc.psv;
 minstrs=min.substr(3,2);
 
 horaint = (parseInt(horastr)*60) + horaint; 
@@ -1420,7 +1420,7 @@ ipsv :"IPSV : " + response.rows[i].doc.ipsv,
 tpsv :"TPSV : " + response.rows[i].doc.tpsu,
 psv:"PSV : " +  response.rows[i].doc.psv,
 pd:"PD : " + response.rows[i].doc.pd,
-nipsV: "NIPSV : " + response.rows[i].doc.pps,
+//nipsV: "NIPSV : " + response.rows[i].doc.pps,
 alerta :"Alerta : " +  response.rows[i].doc.alerta ,
 
 
