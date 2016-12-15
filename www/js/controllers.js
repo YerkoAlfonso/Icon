@@ -1262,7 +1262,7 @@ $scope.customStyle10 = {};
  datosDBLocal=[]
 
 var userBd = localStorage.getItem("username");
-dbLocal.allDocs({startkey : 'vuelo_ordenado_'+userBd+'\uffff',endkey: 'vuelo_ordenado_'+userBd+'',descending:true,include_docs:true}, function callback (err,response3){
+dbLocal.allDocs({startkey : 'tiempo_vuelo_'+userBd+'\uffff',endkey: 'tiempo_vuelo_'+userBd+'',descending:true,include_docs:true}, function callback (err,response3){
 console.log(response3);
 var hora = "";
 var min = "";
@@ -1275,20 +1275,28 @@ var siete =0;
 var diez =0;
 for(var i=0; i<response3.rows.length;i++){
 
-hora = response3.rows[i].doc.psv;
+hora = response3.rows[i].doc.tiempoVuelo;
 console.log(hora);
 horastr=hora.substr(0,2);
 
-min = response3.rows[i].doc.psv;
+min = response3.rows[i].doc.tiempoVuelo;
 minstrs=min.substr(3,2);
 
-horaint = (parseInt(horastr)*60) + horaint; 
+horaint = parseInt(horastr) + horaint; 
 minint =parseInt( minstrs ) + minint;
+
+if(minint > 60){
+
+minint = minint - 60;
+horaint ++;
+
+}
+
 total = (horaint + minint)/60;
 
 if(i<7){
 
-  siete = (horaint + minint)/60;
+  siete =horaint;
   if(siete>34){
 
 $scope.customStyle7.style = {"color":"red"}
@@ -1300,7 +1308,7 @@ $scope.customStyle7.style = {"color":"red"}
 }
 }
 if(i<10){
-diez = (horaint + minint)/60;
+diez = horaint;
 if(diez > 68){
 
   $scope.customStyle10.style = {"color":"red"}
@@ -1314,8 +1322,8 @@ else{
 }
 
 
-$scope.sietedias = siete.toFixed();
-$scope.diezdia = diez.toFixed();
+$scope.sietedias = siete.toString() + ":" + minint.toString();
+$scope.diezdia = diez.toString() + ":" + minint.toString();
 })
 
 
