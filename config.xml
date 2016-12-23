@@ -46,14 +46,14 @@
 
     <!-- Core plugins -->
 	
-	<!--<plugin name="cordova-plugin-media-capture" source="npm" spec="*">
+	<<plugin name="cordova-plugin-media-capture" source="npm" spec="*">
   <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
   <variable name="MICROPHONE_USAGE_DESCRIPTION" value="App would like to access the microphone." />
   <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
 </plugin>
     <plugin name="cordova-plugin-battery-status" />
     <plugin name="cordova-plugin-camera" />
-    <plugin name="cordova-plugin-media-capture" source="npm" />
+ 
     <plugin name="cordova-plugin-console" />
     <plugin name="cordova-plugin-contacts" />
     <plugin name="cordova-plugin-device" />
@@ -68,7 +68,7 @@
     <plugin name="cordova-plugin-media" />
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-splashscreen" />
-    <plugin name="cordova-plugin-vibration" /> ->
+    <plugin name="cordova-plugin-vibration" />
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
