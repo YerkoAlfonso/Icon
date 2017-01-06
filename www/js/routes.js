@@ -34,7 +34,7 @@ angular.module('app.routes', [])
     url: '/page3',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/cloud.html',
+        templateUrl: 'templates/login.html',
         controller: 'cloudCtrl'
       }
     }

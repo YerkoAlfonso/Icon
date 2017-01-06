@@ -8,37 +8,36 @@ var Passwordbd= 'f3b731a39b07348a6a4b94ef65284084b19da085'
 var datosDBLocal=[];
 var datosDBRemoto=[];
 
-dbLocal.sync(dbRemote, {
-  live: true,
-  retry: true
-}).on('change', function (change) {
-
-}).on('paused', function (info) {
-}).on('active', function (info) {
-
-}).on('error', function (err) {
-
-});
-dbRemote.sync(dbLocal, {
-  live: true,
-  retry: true
-}).on('change', function (change) {
-  
-}).on('paused', function (info) {
-
-}).on('active', function (info) {
-
-}).on('error', function (err) {
-
-});
-
-
-
 
 angular.module('app.controllers', [])
   
 .controller('vueloOrdinarioCtrl',
-function ($scope, $filter,$ionicHistory) {
+function ($scope, $filter,$ionicHistory,$ionicPopup) {
+
+
+  var verOrigen;
+  var verDestino;
+
+var ItaList = ["LAX","MIA","JFK","MCO","CUN","MEX","PUJ","EZE","AEP","COR","MDZ","RGL","SLA","UAQ","LPB","VVI",
+"FLN","GIG","GRU","BOG","GYE","MPN","LIM","MVD","CCS","FRA","MAD","MXP","SYD","IPC","AKL","PPT","MEL",
+"ANF",
+"ARI",
+"BBA",
+"CJC",
+"MHC",
+"CCP",
+"DAT",
+"IQQ",
+"LSC",
+"ZOS",
+"PMC",
+"PUQ",
+"SCL",
+"ZCO",
+"ZAL"
+]
+
+var italeng = ItaList.length;
 
 
 
@@ -74,6 +73,42 @@ if(id.id == 0){
 
  
 $scope.calcularHorasServicio = function(cxt){
+
+
+
+  verOrigen=false;
+   verDestino=false;
+
+  var agregahorasPD =0;
+
+for (ix=0;ix<italeng;ix++){
+
+if(angular.equals(ItaList[ix].toString(),cxt.origen)){
+verOrigen = true
+break;
+}
+
+
+}
+
+
+for (ixx=0;ixx<italeng;ixx++){
+
+if(angular.equals(ItaList[ixx].toString(),cxt.destino))
+  {
+
+   verDestino = true;
+
+   break;
+}
+
+
+}
+
+
+if(verDestino && verOrigen){
+
+
 
 
 
@@ -316,7 +351,51 @@ strinfinmin = finMinutos.toString();;
 
 }
 $scope.horaspps = stringhppps +":"+ strinfinmin ;
-$scope.horaspd = horasdesc;
+
+
+var stringhoraspd =horasdesc.toString() + ":00";
+var sumhopd =horasdesc;
+/*-AKL  +3:30 al P.D 
+-LAX  +2:30 al P.D
+-MAD +3:00 al P.D
+-MEL  +5:00 al P.D
+-PPT   +3:30 al P.D*/
+
+
+
+if (angular.equals(cxt.destino,"AKL")){
+stringhoraspd = horasdesc +3 ;
+}
+if (angular.equals(cxt.destino,"LAX")){
+sumhopd = horasdesc +2 ;
+}
+if (angular.equals(cxt.destino,"MAD")){
+sumhopd = horasdesc +3 ;
+}
+if (angular.equals(cxt.destino,"MEL")){
+sumhopd = horasdesc +5 ;
+}
+if (angular.equals(cxt.destino,"PPT")){
+sumhopd = horasdesc +3 ;
+}
+//PASO A STRING
+if (angular.equals(cxt.destino,"AKL")){
+stringhoraspd = sumhopd.toString() +":30" ;
+}
+if (angular.equals(cxt.destino,"LAX")){
+stringhoraspd = sumhopd.toString() +":30" ;
+}
+if (angular.equals(cxt.destino,"MAD")){
+stringhoraspd =sumhopd.toString() +":00" ;
+}
+if (angular.equals(cxt.destino,"MEL")){
+stringhoraspd = sumhopd.toString() +":00" ;
+}
+if (angular.equals(cxt.destino,"PPT")){
+stringhoraspd =sumhopd.toString() +":30" ;
+}
+
+$scope.horaspd = stringhoraspd;
 
 var exce =0;
 var alerta ="";
@@ -404,7 +483,6 @@ if(finMinutos <10){
 
 
 
-{}
 
 
 
@@ -418,12 +496,25 @@ bd_vuelo = cxt.vuelo;
 bd_ipsv = stringhoral.toString()+":" + minucero;
 bd_tpsu = stringhoraclfin.toString() + ":" + minfincero ;
 bd_psv = stringtiempotrans +":" +  strinminutos;
-bd_pd =  horasdesc ;
+bd_pd =  stringhoraspd ;
 bd_pps = stringhppps +":"+ strinfinmin ;
 bd_alerta = alerta;
  
 
 console.log(bd_dianoche + "-" + bd_pilotos + "-" + bd_n + "-" +bd_fecha + "-" +bd_vuelo + "-" +bd_ipsv + "-" +bd_tpsu+ "-" + bd_psv + "-" + bd_pd + "-" + bd_pps);
+
+}
+
+
+else
+{
+
+var alertPopUp = $ionicPopup.alert ({
+  title: 'Datos no validos ',
+  template:  'Origen y/o Destino no son validos por sigla IATA'
+});
+
+}
 
 }
 
@@ -476,7 +567,35 @@ dbLocal.put(vp, function(err, result){
 
    
 .controller('vueloEspecialCtrl',
-function ($scope,$filter,$ionicHistory) {
+function ($scope,$filter,$ionicHistory,$ionicPopup) {
+
+  var verOrigen;
+  var verDestino;
+
+var ItaList = ["LAX","MIA","JFK","MCO","CUN","MEX","PUJ","EZE","AEP","COR","MDZ","RGL","SLA","UAQ","LPB","VVI",
+"FLN","GIG","GRU","BOG","GYE","MPN","LIM","MVD","CCS","FRA","MAD","MXP","SYD","IPC","AKL","PPT","MEL",
+"ANF",
+"ARI",
+"BBA",
+"CJC",
+"MHC",
+"CCP",
+"DAT",
+"IQQ",
+"LSC",
+"ZOS",
+"PMC",
+"PUQ",
+"SCL",
+"ZCO",
+"ZAL"
+]
+
+var italeng = ItaList.length;
+
+
+
+
 var bd_dianoche ="";
 
 var bd_pilotos =0;
@@ -518,7 +637,42 @@ if(id.id = 2){
 $scope.calcularHorasServicio = function(cxt){
 
 
+  verOrigen=false;
+   verDestino=false;
 
+  var agregahorasPD =0;
+
+for (ix=0;ix<italeng;ix++){
+
+if(angular.equals(ItaList[ix].toString(),cxt.origen)){
+verOrigen = true
+break;
+}
+
+
+}
+
+
+for (ixx=0;ixx<italeng;ixx++){
+
+if(angular.equals(ItaList[ixx].toString(),cxt.destino))
+  {
+
+   verDestino = true;
+
+   break;
+}
+
+
+}
+
+
+if(verDestino && verOrigen){
+
+
+
+
+   
 var dianoche2 = "";
 
 if(n_pilotos ==0 ){
@@ -711,6 +865,10 @@ horasdesc =24;
 
 }
 
+
+
+
+
 var horaspps2 =horasdesc + finHoras2;
 console.log("Fin" + finHoras2);
 console.log("des" +  horasdesc);
@@ -756,7 +914,51 @@ strinfinmin = finMinutos.toString();;
 
 }
 $scope.horaspps = stringhppps +":"+ strinfinmin ;
-$scope.horaspd = horasdesc;
+
+
+var stringhoraspd =horasdesc.toString() + ":00";
+var sumhopd =horasdesc;
+/*-AKL  +3:30 al P.D 
+-LAX  +2:30 al P.D
+-MAD +3:00 al P.D
+-MEL  +5:00 al P.D
+-PPT   +3:30 al P.D*/
+
+
+
+if (angular.equals(cxt.destino,"AKL")){
+stringhoraspd = horasdesc +3 ;
+}
+if (angular.equals(cxt.destino,"LAX")){
+sumhopd = horasdesc +2 ;
+}
+if (angular.equals(cxt.destino,"MAD")){
+sumhopd = horasdesc +3 ;
+}
+if (angular.equals(cxt.destino,"MEL")){
+sumhopd = horasdesc +5 ;
+}
+if (angular.equals(cxt.destino,"PPT")){
+sumhopd = horasdesc +3 ;
+}
+//PASO A STRING
+if (angular.equals(cxt.destino,"AKL")){
+stringhoraspd = sumhopd.toString() +":30" ;
+}
+if (angular.equals(cxt.destino,"LAX")){
+stringhoraspd = sumhopd.toString() +":30" ;
+}
+if (angular.equals(cxt.destino,"MAD")){
+stringhoraspd =sumhopd.toString() +":00" ;
+}
+if (angular.equals(cxt.destino,"MEL")){
+stringhoraspd = sumhopd.toString() +":00" ;
+}
+if (angular.equals(cxt.destino,"PPT")){
+stringhoraspd =sumhopd.toString() +":30" ;
+}
+
+$scope.horaspd = stringhoraspd;
 
 var exce =0;
 var alerta ="";
@@ -844,7 +1046,7 @@ if(finMinutos <10){
 
 
 
-{}
+
 //variables para BD
 bd_dianoche = dianoche2;
 bd_pilotos = n_pilotos;
@@ -856,18 +1058,37 @@ bd_vuelo = cxt.vuelo;
 bd_ipsv = stringhoral.toString()+":" + minucero;
 bd_tpsu = stringhoraclfin.toString() + ":" + minfincero ;
 bd_psv =stringtiempotrans +":" +  strinminutos;
-bd_pd =  horasdesc ;
+bd_pd =  stringhoraspd ;
 bd_pps = stringhppps +":"+ strinfinmin ;
 bd_alerta = alerta;
  
 
 console.log(bd_dianoche + "-" + bd_pilotos + "-" + bd_n + "-" +bd_fecha + "-" +bd_vuelo + "-" +bd_ipsv + "-" +bd_tpsu+ "-" + bd_psv + "-" + bd_pd + "-" + bd_pps);
 
+
+
+}
+
+
+else
+{
+
+var alertPopUp = $ionicPopup.alert ({
+  title: 'Datos no validos ',
+  template:  'Origen y/o Destino no son validos por sigla IATA'
+});
+
+}
+
 }
 var userBd = localStorage.getItem("username");
 
-$scope.GuardarDatos = function(){
 
+
+
+
+
+$scope.GuardarDatos = function(){
 
 
 
@@ -906,16 +1127,44 @@ dbLocal.put(vp, function(err, result){
 
 
 }
-
 })
    
 .controller('cloudCtrl', ['$scope', '$stateParams','$state', 
-function ($scope, $stateParams,$state) {
+function ($scope, $stateParams,$state,$urlRouterProvider) {
+  localStorage.removeItem("username");
+  localStorage.clear();
+
 if(window.localStorage.getItem("username")!== undefined ){
   localStorage.removeItem("username");
+ 
+dbLocal.sync(dbRemote, {
+  live: true,
+  retry: true
+}).on('change', function (change) {
+
+}).on('paused', function (info) {
+}).on('active', function (info) {
+
+}).on('error', function (err) {
+
+});
+dbRemote.sync(dbLocal, {
+  live: true,
+  retry: true
+}).on('change', function (change) {
+  
+}).on('paused', function (info) {
+
+}).on('active', function (info) {
+
+}).on('error', function (err) {
+
+});
+
 $state.go('login');
+
 }
-$state.go('login');
+
 }])
 
 
@@ -1154,9 +1403,36 @@ dbLocal.sync(dbRemote, {
 .controller('loginCtrl', ['$scope', '$stateParams','$state',
 function ($scope, $stateParams,$state,$location) {
 
+$scope.alerta_lo ="";
+var dbLocal = new PouchDB("pilotos_bd");
+
+dbLocal.sync(dbRemote, {
+  live: true,
+  retry: true
+}).on('change', function (change) {
+
+}).on('paused', function (info) {
+}).on('active', function (info) {
+
+}).on('error', function (err) {
+
+});
+dbRemote.sync(dbLocal, {
+  live: true,
+  retry: true
+}).on('change', function (change) {
+  
+}).on('paused', function (info) {
+
+}).on('active', function (info) {
+
+}).on('error', function (err) {
+
+});
 
 if(window.localStorage.getItem("username")!== null || window.localStorage.getItem("username")!= undefined ){
 $state.go('menu.seleccioneTipoVuelo');
+
 }
 else
 {
