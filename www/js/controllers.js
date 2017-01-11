@@ -232,7 +232,10 @@ strinminutos = transcurridoMinutos.toString();
   }
   $scope.transcurridoHoras =  stringtiempotrans +":" +  strinminutos;
 
-
+if(transcurridoMinutos > 0){
+  
+  horasdif = horasdif +1;
+}
 
 var horasdesc =0;
 if(horasdif < 8){
