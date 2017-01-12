@@ -232,6 +232,7 @@ strinminutos = transcurridoMinutos.toString();
   }
   $scope.transcurridoHoras =  stringtiempotrans +":" +  strinminutos;
 
+<<<<<<< HEAD
 
 if (transcurridoMinutos>0){
 
@@ -240,6 +241,12 @@ horasdif = horasdif +1 ;
 
 }
 
+=======
+if(transcurridoMinutos > 0){
+  
+  horasdif = horasdif +1;
+}
+>>>>>>> origin/master
 
 var horasdesc =0;
 if(horasdif < 8){
