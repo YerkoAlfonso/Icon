@@ -233,6 +233,13 @@ strinminutos = transcurridoMinutos.toString();
   $scope.transcurridoHoras =  stringtiempotrans +":" +  strinminutos;
 
 
+if (transcurridoMinutos>0){
+
+
+horasdif = horasdif +1 ;
+
+}
+
 
 var horasdesc =0;
 if(horasdif < 8){
@@ -404,6 +411,11 @@ if(n_pilotos == 2 ){
     if(timetrans > 12){
       exce = timetrans -12;
       alerta = "Se ha excedido en " + exce + " horas";
+
+      var alertPopUp = $ionicPopup.alert ({
+  title: 'Alerta de horas ',
+  template:  "Se ha excedido en " + exce + "horas"
+});
     }
    
     } else
@@ -412,6 +424,11 @@ if(n_pilotos == 2 ){
 console.log("aqui"+timetrans);
            exce = timetrans -14;
       alerta = "Se ha excedido en " + exce +" horas";
+
+      var alertPopUp = $ionicPopup.alert ({
+  title: 'Alerta de horas ',
+  template:  "Se ha excedido en " + exce + "horas"
+});
 
       }
 
@@ -423,11 +440,19 @@ console.log("aqui"+timetrans);
 if(n_pilotos == 3 & timetrans > 18){
     exce = timetrans -18;
       alerta = "Se ha excedido en " + exce + " horas";
+      var alertPopUp = $ionicPopup.alert ({
+  title: 'Alerta de horas ',
+  template:  "Se ha excedido en " + exce + "horas"
+});
 }
 
 if(n_pilotos == 4 & timetrans > 20){
      exce = timetrans -20;
       alerta = "Se ha excedido en " + exce + " horas";
+      var alertPopUp = $ionicPopup.alert ({
+  title: 'Alerta de horas ',
+  template:  "Se ha excedido en " + exce + "horas"
+});
 }
 
 $scope.alerta_h = alerta;
@@ -618,16 +643,20 @@ $scope.lista = [{"id": 0 , "texto":"2 pilotos"},{"id" : 1 , "texto": "3 pilotos"
 
 $scope.cantidadPilotos = function(id){
 
+
 if(id.id == 0){
 
   n_pilotos =2;
+  
 }
 if(id.id  ==1 ){
   n_pilotos = 3;
+ 
 }
 
-if(id.id = 2){
+if(id.id == 2){
   n_pilotos = 4;
+  
 }
 
 }
@@ -672,7 +701,7 @@ if(verDestino && verOrigen){
 
 
 
-   
+   console.log(n_pilotos);
 var dianoche2 = "";
 
 if(n_pilotos ==0 ){
@@ -790,7 +819,12 @@ strinminutos = transcurridoMinutos.toString();
   }
   $scope.transcurridoHoras =  stringtiempotrans +":" +  strinminutos;
 
+if (transcurridoMinutos>0){
 
+
+horasdif = horasdif +1 ;
+
+}
 
 
 var horasdesc =0;
@@ -967,6 +1001,10 @@ if(n_pilotos == 2 ){
     if(timetrans > 12){
       exce = timetrans -12;
       alerta = "Se ha excedido en " + exce + "horas";
+        var alertPopUp = $ionicPopup.alert ({
+  title: 'Alerta de horas ',
+  template:  "Se ha excedido en " + exce + "horas"
+});
     }
    
     } else
@@ -975,6 +1013,10 @@ if(n_pilotos == 2 ){
 console.log("aqui"+timetrans);
            exce = timetrans -14;
       alerta = "Se ha excedido en " + exce +"horas";
+        var alertPopUp = $ionicPopup.alert ({
+  title: 'Alerta de horas ',
+  template:  "Se ha excedido en " + exce + "horas"
+});
 
       }
 
@@ -986,11 +1028,22 @@ console.log("aqui"+timetrans);
 if(n_pilotos == 3 & timetrans > 18){
     exce = timetrans -18;
       alerta = "Se ha excedido en " + exce + "horas";
+
+
+var alertPopUp = $ionicPopup.alert ({
+  title: 'Alerta de horas ',
+  template:  "Se ha excedido en " + exce + "horas"
+});
 }
 
 if(n_pilotos == 4 & timetrans > 20){
      exce = timetrans -20;
       alerta = "Se ha excedido en " + exce + "horas";
+
+      var alertPopUp = $ionicPopup.alert ({
+  title: 'Alerta de horas ',
+  template:  "Se ha excedido en " + exce + "horas"
+});
 }
 
 $scope.alerta_h = alerta;
