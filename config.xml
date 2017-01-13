@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.helloworld"
-        version   = "2.0.4">
+        version   = "2.0.5">
 
     <name>SPL </name>
 
@@ -111,7 +111,7 @@ SPL
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-    <string>104</string>
+    <string>105</string>
     </gap:config-file>
 
     <!--

@@ -237,7 +237,7 @@ if (transcurridoMinutos>0){
 
 
 horasdif = horasdif +1 ;
-
+timetrans = timetrans +1;
 }
 
 
@@ -362,12 +362,6 @@ $scope.horaspps = stringhppps +":"+ strinfinmin ;
 
 var stringhoraspd =horasdesc.toString() + ":00";
 var sumhopd =horasdesc;
-/*-AKL  +3:30 al P.D 
--LAX  +2:30 al P.D
--MAD +3:00 al P.D
--MEL  +5:00 al P.D
--PPT   +3:30 al P.D*/
-
 
 
 if (angular.equals(cxt.destino,"AKL")){
@@ -410,24 +404,26 @@ if(n_pilotos == 2 ){
   if(cxt.dia_noche){
     if(timetrans > 12){
       exce = timetrans -12;
-      alerta = "Se ha excedido en " + exce + " horas";
-
+    //  alerta = "Se ha excedido en " + exce + " horas";
+ alerta = "Se ha excedido en P.S.V";
       var alertPopUp = $ionicPopup.alert ({
   title: 'Alerta de horas ',
-  template:  "Se ha excedido en " + exce + "horas"
+  //template:  "Se ha excedido en " + exce + "horas"
+ template:  "Se ha excedido en P.S.V"
 });
     }
    
     } else
     {
-      if(timetrans>14){
+      if(timetrans>12){
 console.log("aqui"+timetrans);
-           exce = timetrans -14;
-      alerta = "Se ha excedido en " + exce +" horas";
-
+           exce = timetrans -12;
+      //alerta = "Se ha excedido en " + exce +" horas";
+        alerta = "Se ha excedido en P.S.V";
       var alertPopUp = $ionicPopup.alert ({
   title: 'Alerta de horas ',
-  template:  "Se ha excedido en " + exce + "horas"
+  //template:  "Se ha excedido en " + exce + "horas"
+  template: "Se ha excedido en P.S.V"
 });
 
       }
@@ -439,19 +435,23 @@ console.log("aqui"+timetrans);
 
 if(n_pilotos == 3 & timetrans > 18){
     exce = timetrans -18;
-      alerta = "Se ha excedido en " + exce + " horas";
+     // alerta = "Se ha excedido en " + exce + " horas";
+     alerta = "Se ha excedido en P.S.V";
       var alertPopUp = $ionicPopup.alert ({
   title: 'Alerta de horas ',
-  template:  "Se ha excedido en " + exce + "horas"
+  //template:  "Se ha excedido en " + exce + "horas"
+  template: "Se ha excedido en P.S.V"
 });
 }
 
 if(n_pilotos == 4 & timetrans > 20){
      exce = timetrans -20;
-      alerta = "Se ha excedido en " + exce + " horas";
+     // alerta = "Se ha excedido en " + exce + " horas";
+     alerta = "Se ha excedido en P.S.V";
       var alertPopUp = $ionicPopup.alert ({
   title: 'Alerta de horas ',
-  template:  "Se ha excedido en " + exce + "horas"
+ // template:  "Se ha excedido en " + exce + "horas"
+ template: "Se ha excedido en P.S.V"
 });
 }
 
@@ -823,6 +823,7 @@ if (transcurridoMinutos>0){
 
 
 horasdif = horasdif +1 ;
+timetrans = timetrans +1;
 
 }
 
@@ -952,12 +953,6 @@ $scope.horaspps = stringhppps +":"+ strinfinmin ;
 
 var stringhoraspd =horasdesc.toString() + ":00";
 var sumhopd =horasdesc;
-/*-AKL  +3:30 al P.D 
--LAX  +2:30 al P.D
--MAD +3:00 al P.D
--MEL  +5:00 al P.D
--PPT   +3:30 al P.D*/
-
 
 
 if (angular.equals(cxt.destino,"AKL")){
@@ -1000,22 +995,26 @@ if(n_pilotos == 2 ){
   if(cxt.dia_noche){
     if(timetrans > 12){
       exce = timetrans -12;
-      alerta = "Se ha excedido en " + exce + "horas";
+      //alerta = "Se ha excedido en " + exce + "horas";
+      alerta = "Se ha excedido en P.S.V";
         var alertPopUp = $ionicPopup.alert ({
   title: 'Alerta de horas ',
-  template:  "Se ha excedido en " + exce + "horas"
+  //template:  "Se ha excedido en " + exce + "horas"
+  template : "Se ha excedido en P.S.V"
 });
     }
    
     } else
     {
-      if(timetrans>14){
+      if(timetrans>12){
 console.log("aqui"+timetrans);
-           exce = timetrans -14;
-      alerta = "Se ha excedido en " + exce +"horas";
+           exce = timetrans -12;
+     // alerta = "Se ha excedido en " + exce +"horas";
+     alerta = "Se ha excedido en P.S.V";
         var alertPopUp = $ionicPopup.alert ({
   title: 'Alerta de horas ',
-  template:  "Se ha excedido en " + exce + "horas"
+  //template:  "Se ha excedido en " + exce + "horas"
+  template :"Se ha excedido en P.S.V"
 });
 
       }
@@ -1027,22 +1026,24 @@ console.log("aqui"+timetrans);
 
 if(n_pilotos == 3 & timetrans > 18){
     exce = timetrans -18;
-      alerta = "Se ha excedido en " + exce + "horas";
-
+     // alerta = "Se ha excedido en " + exce + "horas";
+      alerta = "Se ha excedido en P.S.V";
 
 var alertPopUp = $ionicPopup.alert ({
   title: 'Alerta de horas ',
-  template:  "Se ha excedido en " + exce + "horas"
+  //template:  "Se ha excedido en " + exce + "horas"
+  template : "Se ha excedido en P.S.V"
 });
 }
 
 if(n_pilotos == 4 & timetrans > 20){
      exce = timetrans -20;
-      alerta = "Se ha excedido en " + exce + "horas";
-
+     // alerta = "Se ha excedido en " + exce + "horas";
+alerta = "Se ha excedido en P.S.V";
       var alertPopUp = $ionicPopup.alert ({
   title: 'Alerta de horas ',
-  template:  "Se ha excedido en " + exce + "horas"
+  //template:  "Se ha excedido en " + exce + "horas"
+  template: "Se ha excedido en P.S.V"
 });
 }
 
