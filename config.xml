@@ -54,6 +54,8 @@ SPL
     <plugin name="cordova-plugin-statusbar" spec="~2.2.0" />
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
      <plugin name="cordova-plugin-ios-camera-permissions" spec="~1.0.4" />
+ <plugin name="cordova-plugin-inappbrowser" source="npm" version="1.0.1" />
+
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
